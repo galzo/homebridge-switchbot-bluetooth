@@ -1,0 +1,55 @@
+declare module 'node-switchbot' {
+	/**
+	 * "H", "T" or "c". If "H" is specified,
+	 * this method will discover only Bots.
+	 * If "T" is specified, this method will discover only Meters.
+	 * If "c" is specified, this method will discover only Curtains.
+	 */
+	export type ModelType = 'H' | 'T' | 'C';
+	export type ModelName = 'WoHand' | 'WoSensorTH';
+	export type ConnectionState =
+		| 'connecting'
+		| 'connected'
+		| 'disconnecting'
+		| 'disconnected';
+
+	/**
+	 * The SwitchbotDevice object represents a Switchbot device (Bot or Meter),
+	 * which is created through the discovery process triggered by the Switchbot.discover() method.
+	 */
+	export interface SwitchBotDevice {
+		id: string;
+		address: string;
+		model: ModelType;
+		modelName: ModelName;
+		connectionState: ConnectionState;
+		onConnect: () => void;
+		onDisconnect: () => void;
+	}
+
+	/**
+	 * The SwitchbotDeviceWoHand object represents an Bot, which is created through the discovery process
+	 * triggered by the Switchbot.discover() method.
+	 * Actually, the SwitchbotDeviceWoHand is an object inherited from the SwitchbotDevice.
+	 * You can use not only the method described in this section but also the
+	 * properties and methods implemented in the SwitchbotDevice object.
+	 */
+	export interface SwitchbotDeviceWoHand extends SwitchBotDevice {
+		press: () => Promise<void>;
+		turnOn: () => Promise<void>;
+		turnOff: () => Promise<void>;
+		up: () => Promise<void>;
+		down: () => Promise<void>;
+	}
+
+	export default class SwitchBot {
+		discover: (props: {
+			duration: number;
+			model: ModelType;
+			quick: boolean;
+			id: string;
+		}) => Promise<any>;
+
+		wait: (waitMs: number) => Promise<void>;
+	}
+}
