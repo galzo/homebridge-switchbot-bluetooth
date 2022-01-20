@@ -1,35 +1,50 @@
-import { SwitchbotPlatform } from './../platform/SwitchbotPlatform';
-import { DEFAULT_MOVE_TIME, DEFAULT_OPEN_CLOSE_THRESHOLD, DEFAULT_SCAN_DURATION, DEFAULT_SCAN_INTERVAL } from '../settings';
+import { HAP, Logging } from 'homebridge';
+import {
+	DEFAULT_SCAN_DURATION,
+	DEFAULT_SCAN_RETRIES,
+	DEFAULT_SCAN_RETRY_COOLDOWN,
+} from '../settings';
 import { IConfigAccessory } from '../types/accessoryTypes';
+import { BotAccessory } from './botAccessory';
 
 export class AccessoryFactory {
-    constructor(private readonly platform: SwitchbotPlatform) {
-        
-    }
+	private readonly hap: HAP;
+	private readonly log: Logging;
 
-    private adaptAccessoryConfig(config: IConfigAccessory) {
-        const {
+	constructor(hap: HAP, log: Logging) {
+		this.hap = hap;
+		this.log = log;
+	}
+
+	private adaptAccessoryConfig(config: IConfigAccessory) {
+		const {
 			scanDuration = DEFAULT_SCAN_DURATION,
-			scanInterval = DEFAULT_SCAN_INTERVAL,
-		} = config;        
+			scanRetries = DEFAULT_SCAN_RETRIES,
+			scanRetryCooldown = DEFAULT_SCAN_RETRY_COOLDOWN,
+		} = config;
 
-        const adaptedScanInterval = scanInterval < scanDuration ? scanDuration + 1000 : scanInterval;
-
-        return {
-            ...config,
-            bleMac: config.address.toLowerCase(),
-            reverseDir: config.reverseDirection || false,
-            moveTime: config.moveTime || DEFAULT_MOVE_TIME,
-            openCloseThreshold: config.openCloseThreshold || DEFAULT_OPEN_CLOSE_THRESHOLD,
-            scanInterval: adaptedScanInterval,
-            scanDuration,
-        };
-    }
-
+		return {
+			...config,
+			bleMac: config.address.toLowerCase(),
+			scanDuration,
+			scanRetries,
+			scanRetryCooldown,
+		};
+	}
 
 	public buildFromConfig(config: IConfigAccessory) {
-        switch (config.type) {
-            return null;
-        }
-    };
+		const { name, type } = config;
+		const accessoryParams = this.adaptAccessoryConfig(config);
+
+		switch (type) {
+			case 'bot':
+				return new BotAccessory(name, this.hap, this.log, accessoryParams);
+			case 'contact':
+			case 'curtain':
+			case 'meter':
+			case 'motion':
+			default:
+				throw new Error('accessory is not yet supported');
+		}
+	}
 }

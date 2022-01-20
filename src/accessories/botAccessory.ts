@@ -1,8 +1,5 @@
 import {
-	PlatformAccessory,
-	AccessoryPlugin,
 	Service,
-	Characteristic,
 	HAP,
 	Logging,
 	CharacteristicEventTypes,
@@ -10,11 +7,12 @@ import {
 	CharacteristicValue,
 	CharacteristicSetCallback,
 	HAPStatus,
+	AccessoryPlugin,
 } from 'homebridge';
 import { SwitchBotClient } from '../handlers/switchBotClient';
 import { IAccessoryParams } from '../types/accessoryTypes';
 
-export class BotAccessory {
+export class BotAccessory implements AccessoryPlugin {
 	private readonly switchService: Service;
 	private readonly infoService: Service;
 
@@ -41,6 +39,10 @@ export class BotAccessory {
 				hap.Characteristic.SerialNumber,
 				this.accessoryParams.address,
 			);
+	}
+
+	getServices(): Service[] {
+		return [this.infoService, this.switchService];
 	}
 
 	private handleGetSwitchValue = (callback: CharacteristicGetCallback) => {

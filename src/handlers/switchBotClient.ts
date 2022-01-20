@@ -1,8 +1,5 @@
 import { Logger } from 'homebridge';
-import SwitchBot, {
-	SwitchBotDevice,
-	SwitchbotDeviceWoHand,
-} from 'node-switchbot';
+import SwitchBot, { SwitchbotDeviceWoHand } from 'node-switchbot';
 
 export class SwitchBotClient {
 	private log: Logger;

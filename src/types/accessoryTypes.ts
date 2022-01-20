@@ -8,10 +8,6 @@ export interface IConfigAccessory {
 	scanDuration?: number;
 	scanRetries?: number;
 	scanRetryCooldown?: number;
-	scanInterval?: number;
-	reverseDirection?: boolean;
-	moveTime?: number;
-	openCloseThreshold?: number;
 }
 
 export interface IAccessoryParams {
@@ -19,5 +15,4 @@ export interface IAccessoryParams {
 	scanDuration: number;
 	scanRetryCooldown: number;
 	scanRetries: number;
-	reverseDirection: boolean;
 }

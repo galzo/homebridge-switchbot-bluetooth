@@ -1,9 +1,9 @@
 {
   "private": true,
-  "displayName": "HomeBridge Xiaomi MI Door and Window Sensor 2",
-  "name": "homebridge-xiaomi-mi-door-and-window-sensor",
+  "displayName": "Homebridge SwitchBot BLE Platform",
+  "name": "switchbot",
   "version": "1.0.0",
-  "description": "A Homebridge Plugin for directly controlling the Xiaomi MI Door and Window Sensor 2 without a gateway",
+  "description": "A Homebridge Plugin for direct control of SwitchBot bot through BLE",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
