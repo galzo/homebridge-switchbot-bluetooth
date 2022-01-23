@@ -46,7 +46,9 @@ export class BotAccessory implements AccessoryPlugin {
 	}
 
 	private handleGetSwitchValue = (callback: CharacteristicGetCallback) => {
-		this.logPowerState();
+		this.log.info(
+			`Current power state of the switch is: ${this.isSwitchOn ? 'ON' : 'OFF'}`,
+		);
 		callback(HAPStatus.SUCCESS, this.isSwitchOn);
 	};
 
@@ -86,10 +88,4 @@ export class BotAccessory implements AccessoryPlugin {
 			callback(HAPStatus.SERVICE_COMMUNICATION_FAILURE);
 		}
 	};
-
-	private logPowerState() {
-		this.log.info(
-			`Current power state of the switch is: ${this.isSwitchOn ? 'ON' : 'OFF'}`,
-		);
-	}
 }

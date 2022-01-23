@@ -1,7 +1,7 @@
 {
   "private": true,
   "displayName": "Homebridge SwitchBot BLE Platform",
-  "name": "switchbot",
+  "name": "homebridge-switchbot-ble-platform",
   "version": "1.0.0",
   "description": "A Homebridge Plugin for direct control of SwitchBot bot through BLE",
   "license": "Apache-2.0",

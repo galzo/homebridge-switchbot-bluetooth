@@ -18,7 +18,7 @@ export class SwitchBotClient {
 	) => {
 		const setState = async () => {
 			this.log.info(
-				`Updating SwitchBot device (id ${device.id}) power state to ${
+				`Updating SwitchBot device (id ${device.address}) power state to ${
 					targetState ? 'ON' : 'OFF'
 				}`,
 			);
@@ -57,7 +57,7 @@ export class SwitchBotClient {
 		scanDuration: number,
 		shouldCache = true,
 	) => {
-		this.log.info(`Scanning for SwitchBot device (id ${address})`);
+		this.log.info(`Scanning for SwitchBot device (address ${address})`);
 
 		const scannedDevices: SwitchbotDeviceWoHand[] = await this.client.discover({
 			duration: scanDuration,
@@ -68,14 +68,14 @@ export class SwitchBotClient {
 
 		const noDeviceFound = !scannedDevices || scannedDevices.length <= 0;
 		if (noDeviceFound) {
-			throw new Error(`No Device found for id ${address}`);
+			throw new Error(`No Device found for address ${address}`);
 		}
 
 		const targetDevice = scannedDevices[0];
-		this.log.info(`Found SwitchBot device (id ${address})`);
+		this.log.info(`Found SwitchBot device (address ${address})`);
 
 		if (shouldCache) {
-			this.setDeviceOnCache(targetDevice);
+			this.setDeviceOnCache(address, targetDevice);
 		}
 		return targetDevice;
 	};
@@ -83,17 +83,22 @@ export class SwitchBotClient {
 	private getDeviceFromCache = (address: string) => {
 		const device = this.deviceCache.get(address);
 		if (device) {
-			this.log.info(`Found SwitchBot device (id ${address}) on cache.`);
+			this.log.info(`Found SwitchBot device (address ${address}) on cache.`);
 			return device;
 		}
 
-		this.log.info(`No SwitchBot device (id ${address} was found on cache.`);
+		this.log.info(
+			`No SwitchBot device (address ${address}) was found on cache.`,
+		);
 		return null;
 	};
 
-	private setDeviceOnCache = (device: SwitchbotDeviceWoHand) => {
-		this.log.info(`Setting device (id ${device.address} on cache.`);
-		this.deviceCache.set(device.address, device);
+	private setDeviceOnCache = (
+		address: string,
+		device: SwitchbotDeviceWoHand,
+	) => {
+		this.log.info(`Setting device (id ${address}) on cache.`);
+		this.deviceCache.set(address, device);
 	};
 
 	private async attemptRun<T>(
