@@ -1,7 +1,8 @@
 {
-  "pluginAlias": "ExampleHomebridgePlugin",
+  "pluginAlias": "SwitchBotPlatform",
   "pluginType": "platform",
   "singular": true,
+  "customUi": true,
   "schema": {
     "type": "object",
     "properties": {
@@ -9,7 +10,83 @@
         "title": "Name",
         "type": "string",
         "required": true,
-        "default": "Example Dynamic Platform"
+        "default": "SwitchBotPlatform"
+      },
+      "devices": {
+        "type": "array",
+        "title": "Devices",
+        "required": true,
+        "items": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "title": "Type",
+              "required": true,
+              "default": "form",
+              "oneOf": [
+                {
+                  "title": "Bot",
+                  "enum": [
+                    "bot"
+                  ]
+                },
+                {
+                  "title": "Meter - Not Yet Supported",
+                  "enum": [
+                    "meter"
+                  ]
+                },
+                {
+                  "title": "Curtain - Not Yet Supported",
+                  "enum": [
+                    "curtain"
+                  ]
+                },
+                {
+                  "title": "Contact - Not Yet Supported",
+                  "enum": [
+                    "contact"
+                  ]
+                },
+                {
+                  "title": "Motion - Not Yet Supported",
+                  "enum": [
+                    "motion"
+                  ]
+                }
+              ]
+            },
+            "name": {
+              "type": "string",
+              "required": true,
+              "title": "Name"
+            },
+            "address": {
+              "type": "string",
+              "required": true,
+              "title": "Bluetooth Low Energy (BLE) MAC Address",
+              "placeholder": "D7:1E:5C:74:39:61"
+            },
+            "scanDuration": {
+              "type": "integer",
+              "title": "Device Scan Duration (Default is 5000ms)"
+            },
+            "scanRetries": {
+              "type": "integer",
+              "title": "Device Re-scan attempts in case of failure (Default is 5)"
+            },
+            "scanRetryCooldown": {
+              "type": "integer",
+              "title": "Device Re-scan attempt cooldown (Default is 1000ms)"
+            }
+          }
+        }
+      },
+      "debug": {
+        "title": "Debug",
+        "type": "boolean",
+        "required": false
       }
     }
   }

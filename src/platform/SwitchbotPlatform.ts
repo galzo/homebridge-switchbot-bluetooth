@@ -1,10 +1,8 @@
 import {
 	AccessoryPlugin,
 	API,
-	Characteristic,
 	Logging,
 	PlatformConfig,
-	Service,
 	StaticPlatformPlugin,
 } from 'homebridge';
 import { IConfigAccessory } from '../types/accessoryTypes';
@@ -15,33 +13,32 @@ export class SwitchbotPlatform implements StaticPlatformPlugin {
 	private readonly config: PlatformConfig;
 	private readonly api: API;
 
-	private readonly service: typeof Service;
-	private readonly characteristic: typeof Characteristic;
 	private readonly accessoryFactory: AccessoryFactory;
 
 	constructor(log: Logging, config: PlatformConfig, api: API) {
 		this.log = log;
 		this.config = config;
 		this.api = api;
-		this.service = this.api.hap.Service;
-		this.characteristic = this.api.hap.Characteristic;
 		this.accessoryFactory = new AccessoryFactory(this.api.hap, this.log);
 		this.log.info('SwitchBot Platform Initializing');
 	}
 
-	private logDevice = (device: IConfigAccessory) => {
-		this.log.debug(device.type);
-		this.log.debug(device.name);
-		this.log.debug(device.address);
+	private logDevice = (config: IConfigAccessory) => {
+		this.log.debug(config.type);
+		this.log.debug(config.name);
+		this.log.debug(config.address);
 	};
 
 	private resolveDevicesFromConfig = (): AccessoryPlugin[] => {
-		const configDevices = this.config.devices;
-		if (!configDevices) {
+		const { devices } = this.config;
+		if (!devices) {
 			return [];
 		}
 
-		return this.config.devices.map((device: IConfigAccessory) => []);
+		return this.config.devices.map((config: IConfigAccessory) => {
+			this.logDevice(config);
+			return this.accessoryFactory.buildFromConfig(config);
+		});
 	};
 
 	/*
@@ -53,12 +50,14 @@ export class SwitchbotPlatform implements StaticPlatformPlugin {
 	public accessories(
 		callback: (foundAccessories: AccessoryPlugin[]) => void,
 	): void {
-		// const deviceList = this.resolveDeviceListFromConfig();
-		// const deviceCount = deviceList.length;
-		// if (!deviceCount) {
-		// 	this.log.error('No Device Set In Config');
-		// }
-		// this.log(`Device Count: ${deviceCount}`);
-		// callback(deviceList);
+		const deviceList = this.resolveDevicesFromConfig();
+		const deviceCount = deviceList.length;
+
+		if (!deviceCount) {
+			this.log.error('No Devices were defined in config');
+		}
+
+		this.log(`Initialized SwitchBot devices. device count: ${deviceCount}`);
+		callback(deviceList);
 	}
 }
