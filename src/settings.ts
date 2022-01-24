@@ -1,12 +1,12 @@
 /**
  * This is the name of the platform that users will use to register the plugin in the Homebridge config.json
  */
-export const PLATFORM_NAME = 'SwitchBotBLEPlatform';
+export const PLATFORM_NAME = 'SwitchbotBluetoothPlatform';
 
 /**
  * This must match the name of your plugin as defined the package.json
  */
-export const PLUGIN_NAME = 'homebridge-switchbot-ble-platform';
+export const PLUGIN_NAME = 'homebridge-switchbot-bluetooth-platform';
 
 export const DEFAULT_SCAN_DURATION = 5000;
 export const DEFAULT_SCAN_RETRIES = 5;
