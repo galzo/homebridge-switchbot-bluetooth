@@ -15,6 +15,7 @@ import { IAccessoryParams } from '../types/accessoryTypes';
 export class BotAccessory implements AccessoryPlugin {
 	private readonly switchService: Service;
 	private readonly infoService: Service;
+	private readonly batteryService: Service;
 
 	private switchBotClient: SwitchBotClient;
 	private isSwitchOn = false;
@@ -26,6 +27,7 @@ export class BotAccessory implements AccessoryPlugin {
 		private readonly accessoryParams: IAccessoryParams,
 	) {
 		this.switchBotClient = new SwitchBotClient(log);
+
 		this.switchService = new this.hap.Service.Switch(name);
 		this.switchService
 			.getCharacteristic(hap.Characteristic.On)
@@ -39,10 +41,24 @@ export class BotAccessory implements AccessoryPlugin {
 				hap.Characteristic.SerialNumber,
 				this.accessoryParams.address,
 			);
+
+		this.batteryService = new hap.Service.Battery(`${name} Battery`);
+		this.batteryService
+			.getCharacteristic(hap.Characteristic.BatteryLevel)
+			.onGet(() => {
+				this.log.info('getting battery');
+				return 100;
+			});
+		this.batteryService
+			.getCharacteristic(hap.Characteristic.StatusLowBattery)
+			.onGet(() => {
+				this.log.info('getting low battery');
+				return hap.Characteristic.StatusLowBattery.BATTERY_LEVEL_NORMAL;
+			});
 	}
 
 	getServices(): Service[] {
-		return [this.infoService, this.switchService];
+		return [this.infoService, this.switchService, this.batteryService];
 	}
 
 	private handleGetSwitchValue = (callback: CharacteristicGetCallback) => {
