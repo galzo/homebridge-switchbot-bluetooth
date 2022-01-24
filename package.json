@@ -1,16 +1,16 @@
 {
   "private": true,
-  "displayName": "Homebridge SwitchBot BLE Platform",
-  "name": "homebridge-switchbot-ble-platform",
+  "displayName": "Homebridge SwitchBot Bluetooth Platform",
+  "name": "homebridge-switchbot-bluetooth-platform",
   "version": "1.0.0",
-  "description": "A Homebridge Plugin for direct control of SwitchBot bot through BLE",
+  "description": "A Homebridge platform Plugin for controlling SwitchBot bots using BLE (Bluetooth Low Energry)",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "git://github.com/galzo/Homebridge-Xiaomi-Mi-Door-and-Window-Sensor-2"
+    "url": "git://github.com/galzo/homebridge-switchbot-bluetooth"
   },
   "bugs": {
-    "url": "https://github.com/galzo/Homebridge-Xiaomi-Mi-Door-and-Window-Sensor-2/issues"
+    "url": "https://github.com/galzo/homebridge-switchbot-bluetooth/issues"
   },
   "engines": {
     "node": ">=14.18.1",
