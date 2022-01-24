@@ -1,5 +1,4 @@
 {
-  "private": false,
   "displayName": "Homebridge SwitchBot Bluetooth Platform",
   "name": "homebridge-switchbot-bluetooth-platform",
   "version": "1.0.0",
