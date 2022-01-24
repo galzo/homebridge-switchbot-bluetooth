@@ -63,7 +63,7 @@ declare module 'node-switchbot' {
 			id: string;
 		}) => Promise<any>;
 
-		startScan: (props: { model: ModelType; id: string }) => Promise<void>;
+		startScan: (props: { model?: ModelType; id?: string }) => Promise<void>;
 		stopScan: () => void;
 
 		onadvertisement: (data: AdvertisementData) => void;

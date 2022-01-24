@@ -9,7 +9,8 @@ import {
 	HAPStatus,
 	AccessoryPlugin,
 } from 'homebridge';
-import { SwitchBotClient } from '../handlers/switchBotClient';
+import { MetadataClient } from '../clients/metaDataClient';
+import { SwitchBotClient } from '../clients/switchBotClient';
 import { IAccessoryParams } from '../types/accessoryTypes';
 
 export class BotAccessory implements AccessoryPlugin {
@@ -18,6 +19,7 @@ export class BotAccessory implements AccessoryPlugin {
 	private readonly batteryService: Service;
 
 	private switchBotClient: SwitchBotClient;
+	private metadataClient: MetadataClient;
 	private isSwitchOn = false;
 
 	constructor(
@@ -27,6 +29,7 @@ export class BotAccessory implements AccessoryPlugin {
 		private readonly accessoryParams: IAccessoryParams,
 	) {
 		this.switchBotClient = new SwitchBotClient(log);
+		this.metadataClient = new MetadataClient(log);
 
 		this.switchService = new this.hap.Service.Switch(name);
 		this.switchService
@@ -61,7 +64,7 @@ export class BotAccessory implements AccessoryPlugin {
 
 	private handleGetBatteryValue = () => {
 		const { address, scanDuration } = this.accessoryParams;
-		const batteryLevel = this.switchBotClient.getDeviceBatteryStatus(
+		const batteryLevel = this.metadataClient.getDeviceBatteryStatus(
 			address,
 			scanDuration,
 		);
