@@ -1,7 +1,7 @@
 {
   "displayName": "Homebridge SwitchBot Bluetooth Platform",
   "name": "homebridge-switchbot-bluetooth-platform",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A Homebridge platform Plugin for controlling SwitchBot bots using BLE (Bluetooth Low Energry)",
   "license": "Apache-2.0",
   "repository": {
