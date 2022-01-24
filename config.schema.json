@@ -1,5 +1,5 @@
 {
-  "pluginAlias": "SwitchBotPlatform",
+  "pluginAlias": "SwitchbotBluetoothPlatform",
   "pluginType": "platform",
   "singular": true,
   "customUi": true,
@@ -10,7 +10,7 @@
         "title": "Name",
         "type": "string",
         "required": true,
-        "default": "SwitchBotPlatform"
+        "default": "SwitchbotBluetoothPlatform"
       },
       "devices": {
         "type": "array",
