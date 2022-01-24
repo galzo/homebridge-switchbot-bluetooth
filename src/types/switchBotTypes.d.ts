@@ -42,6 +42,19 @@ declare module 'node-switchbot' {
 		down: () => Promise<void>;
 	}
 
+	export interface AdvertisementData {
+		id: string;
+		address: string;
+		rssi: number;
+		serviceData: ServiceData;
+	}
+
+	export interface ServiceData {
+		model: ModelType;
+		modelName: ModelName;
+		battery: number;
+	}
+
 	export default class SwitchBot {
 		discover: (props: {
 			duration: number;
@@ -50,6 +63,10 @@ declare module 'node-switchbot' {
 			id: string;
 		}) => Promise<any>;
 
+		startScan: (props: { model: ModelType; id: string }) => Promise<void>;
+		stopScan: () => void;
+
+		onadvertisement: (data: AdvertisementData) => void;
 		wait: (waitMs: number) => Promise<void>;
 	}
 }

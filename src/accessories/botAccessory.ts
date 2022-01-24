@@ -45,10 +45,8 @@ export class BotAccessory implements AccessoryPlugin {
 		this.batteryService = new hap.Service.Battery(`${name} Battery`);
 		this.batteryService
 			.getCharacteristic(hap.Characteristic.BatteryLevel)
-			.onGet(() => {
-				this.log.info('getting battery');
-				return 100;
-			});
+			.onGet(this.handleGetBatteryValue);
+
 		this.batteryService
 			.getCharacteristic(hap.Characteristic.StatusLowBattery)
 			.onGet(() => {
@@ -60,6 +58,16 @@ export class BotAccessory implements AccessoryPlugin {
 	getServices(): Service[] {
 		return [this.infoService, this.switchService, this.batteryService];
 	}
+
+	private handleGetBatteryValue = () => {
+		const { address, scanDuration } = this.accessoryParams;
+		const batteryLevel = this.switchBotClient.getDeviceBatteryStatus(
+			address,
+			scanDuration,
+		);
+		this.log.info(`Current battery level of switch is ${batteryLevel}`);
+		return batteryLevel;
+	};
 
 	private handleGetSwitchValue = (callback: CharacteristicGetCallback) => {
 		this.log.info(

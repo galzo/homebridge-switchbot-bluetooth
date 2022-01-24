@@ -25,7 +25,7 @@ export class AccessoryFactory {
 
 		return {
 			...config,
-			bleMac: config.address.toLowerCase(),
+			address: config.address.toLowerCase().trim(),
 			scanDuration,
 			scanRetries,
 			scanRetryCooldown,
