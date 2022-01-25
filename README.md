@@ -11,7 +11,7 @@
 <p>
     The Homebridge SwitchBot Bluetooth Platform is a <a href="https://github.com/homebridge/homebridge">Homebridge</a> plugin
     that allows you to directly control your <a href="https://www.switch-bot.com">SwitchBot</a> bot device from HomeKit 
-    via BLE <a href="https://en.wikipedia.org/wiki/Bluetooth_Low_Energy">(Bluetooth Low Energy)</a>
+    via BLE <a href="https://en.wikipedia.org/wiki/Bluetooth_Low_Energy">(Bluetooth Low Energy).</a><br>
     This plugin aims to provide the best performance and stability when controlling your SwitchBot bot via BLE. 
 </p>
 
