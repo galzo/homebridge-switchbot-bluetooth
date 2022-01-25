@@ -23,7 +23,7 @@
     "prepublishOnly": "npm run lint && npm run build"
   },
   "keywords": [
-    "homebridge-plugin"
+    "homebridge-plugin", "homebridge", "switchbot", "switchbot-ble", "switchbot-bluetooth", "homekit"
   ],
   "dependencies": {
     "node-cache": "^5.1.2",
