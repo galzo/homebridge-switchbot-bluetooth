@@ -45,18 +45,17 @@ To Be Supported Soon:
 
 ## Installation
 
+### Installing Plugin from the Homebridge Plugins Page
 1. Search for "switchbot bluetooth" 
 2. Find `homebridge-switchbot-bluetooth-platform` 
-    - **NOTE:** Check noble [prerequisites](https://github.com/homebridge/noble#prerequisites) for your environment. this is used for the bluetooth communcation.
+    - **NOTE:** Check noble [prerequisites](https://github.com/homebridge/noble#prerequisites) for your operating system. this is used for the bluetooth communcation.
 3. Install the plugin
 
-Click the link below to create a new GitHub Repository using this template, or click the *Use This Template* button above.
+### Installing Plugin Directly:
+1. open Terminal
+2. run command `npm install -g homebridge-switchbot-bluetooth-platform`
+    - **NOTE:** Check noble [prerequisites](https://github.com/homebridge/noble#prerequisites) for your operating system. this is used for the bluetooth communcation.
 
-<span align="center">
-
-### [Create New Repository From Template](https://github.com/homebridge/homebridge-plugin-template/generate)
-
-</span>
 
 ## Setup Development Environment
 
