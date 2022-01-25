@@ -106,8 +106,8 @@ Upon defining a device in the `devices` list, the following properties are avail
 - `address` - MAC Address of the SwitchBot device. see details on how to find it.
 
 **Optional Properties**
-- `scanDuration` - Time for scanning bluetooth devices (in miliseconds). a longer time will increase chance of successfuly detecting new devices, but
-reduce response time.
+- `scanDuration` - Time for scanning bluetooth devices (in miliseconds). 
+<br>a longer time will increase chance of successfuly detecting new devices, but reduce response time.
 <br>Default is `5000` (5000 miliseconds)
 
 - `scanRetries` - Number of times that the plugin should attempt scanning / connecting to SwitchBot device, before failing. 
