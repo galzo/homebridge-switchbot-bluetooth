@@ -121,5 +121,9 @@ Upon defining a device in the `devices` list, the following properties are avail
 <a href="https://apps.apple.com/us/app/switchbot/id1087374760"> iOS App Store </a> / 
 <a href="https://play.google.com/store/apps/details?id=com.theswitchbot.switchbot&hl=en&gl=US">Google Play Store</a>
 2. Register / or Login into your SwitchBot account 
+3. Open the device that you want to add to this platform
+4. Click `Device Info`
+5. Copy the `BLE MAC` address
+6. add this address to the `address` property of the device in the `config.json` file
 
 
