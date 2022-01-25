@@ -8,14 +8,15 @@
 
 # Homebridge SwitchBot Bluetooth Platform
 
-[![npm version](https://badgen.net/npm/v/homebridge-switchbot-bluetooth-platform)](https://www.npmjs.com/package/homebridge-switchbot-bluetooth-platform)
-[![npm downloads](https://badgen.net/npm/dt/homebridge-switchbot-bluetooth-platform)](https://www.npmjs.com/package/homebridge-switchbot-bluetooth-platform)
-
 <p>
     The Homebridge SwitchBot Bluetooth Platform is a <a href="https://github.com/homebridge/homebridge">Homebridge</a> plugin
     that allows you to directly control your <a href="https://www.switch-bot.com">SwitchBot</a> bot from HomeKit via BLE (Bluetooth Low Energy)
     This plugin aims to provide the best performance and stability when controlling your SwitchBot bot via BLE. 
 </p>
+
+[![npm version](https://badgen.net/npm/v/homebridge-switchbot-bluetooth-platform)](https://www.npmjs.com/package/homebridge-switchbot-bluetooth-platform)
+[![npm downloads](https://badgen.net/npm/dt/homebridge-switchbot-bluetooth-platform)](https://www.npmjs.com/package/homebridge-switchbot-bluetooth-platform)
+[![latest commit](https://badgen.net/github/last-commit/galzo/homebridge-switchbot-bluetooth)](https://github.com/galzo/homebridge-switchbot-bluetooth)
 
 ### Why do I need (yet another) SwitchBot plugin?
 
