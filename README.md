@@ -30,10 +30,20 @@
 <p>
     This plugin also aims to provide several new features, such as support for bot <b>battery status</b>, and <b>password-protected BLE communication</b>.
 </p>
+
+Supported Devices:
+- [SwitchBot (Bot)](https://www.switch-bot.com/products/switchbot-bot)
+
+To Be Supported Soon:
+- [SwitchBot Curtain (Curtain)](https://www.switch-bot.com/products/switchbot-curtain)
+- [SwitchBot Thermometer & Hygrometer (Meter)](https://www.switch-bot.com/products/switchbot-meter)
+
 </span>
 
 
-## Installatio
+## Installation
+
+1. Search for "switchbot bluetooth" 
 
 Click the link below to create a new GitHub Repository using this template, or click the *Use This Template* button above.
 
