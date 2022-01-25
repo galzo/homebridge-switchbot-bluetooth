@@ -1,11 +1,7 @@
 
-<p align="center">
+<span align="center>
 
 <img src="https://github.com/homebridge/branding/raw/master/logos/homebridge-wordmark-logo-vertical.png" width="150">
-
-</p>
-
-
 # Homebridge SwitchBot Bluetooth
 
 <p>
@@ -13,6 +9,9 @@
     that allows you to directly control your <a href="https://www.switch-bot.com">SwitchBot</a> bot from HomeKit via BLE (Bluetooth Low
     Energy)
 </p>
+
+</span>
+
 
 This is a template Homebridge platform plugin and can be used as a base to help you get started developing your own plugin.
 
