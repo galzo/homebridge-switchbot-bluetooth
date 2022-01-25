@@ -57,6 +57,44 @@ To Be Supported Soon:
 2. run command `npm install -g homebridge-switchbot-bluetooth-platform`
     - **NOTE:** Check noble [prerequisites](https://github.com/homebridge/noble#prerequisites) for your operating system. this is used for the bluetooth communcation.
 
+## Configuration
+Add a new platform to your homebridge `config.json` file
+
+```json
+"platforms": [
+    {
+        "platform": "SwitchBotBluetoothPlatform",
+        "name": "SwitchBotBluetoothPlatform"
+    }
+]
+```
+
+under the new platform, add `devices` field
+
+```json
+"platforms": [
+    {
+        "platform": "SwitchBotBluetoothPlatform",
+        "name": "SwitchBotBluetoothPlatform",
+        "devices": [
+            {
+                "type": "bot",
+                "name": "Bedroom Bot",
+                "address": "a4:ee:45:10:fa:5d"
+            },
+            {
+                "type": "bot",
+                "name": "Living Room Bot",
+                "bleMac": "c1:fe:61:33:sd:4f",
+                "scanDuration": 2000,
+                "scanRetries": 7,
+                "scanRetryCooldown:" 1000,
+            }
+        ]
+    }
+]
+```
+
 
 ## Setup Development Environment
 
