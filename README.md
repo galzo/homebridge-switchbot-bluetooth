@@ -135,4 +135,4 @@ Upon defining a device in the `devices` list, the following properties are avail
 
 ## Contact Me
 
-For any question, or complaints, feel free to contact me <a href="https://github.com/galzo">here</a>
+For any questions, assistance or feedback feel free to contact me <a href="https://github.com/galzo">here</a>
