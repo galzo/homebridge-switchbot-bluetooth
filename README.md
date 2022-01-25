@@ -17,12 +17,14 @@
     This plugin aims to provide the best performance and stability when controlling your SwitchBot bot via BLE. 
 </p>
 
-## Why do I need (yet another) SwitchBot plugin?
+<h1>Why do I need (yet another) SwitchBot plugin?</h1>
 
 <p>
     The existing SwitchBot plugins did not provide the level of stability and feature-set that I was looking for.
-    This plugin aims to provide the best performance (around 30% faster calls than other switchbot plugins), 
-    and best stabilty (support for retry mechanism, and error handling), assuring you that the plugin will stay stable upon usage,
+</p>
+<p>
+    This plugin aims to provide the <b>best performance</b> (around <b color="green">30% faster</b> BLE calls than other switchbot plugins), 
+    and <b>best stabilty</b> (support for retry mechanism, and error handling), assuring you that the plugin will stay stable upon usage,
     and the switchbot will respond as fast as possible.  
 </p>
 
