@@ -1,12 +1,24 @@
 import { Logger } from 'homebridge';
 import SwitchBot, { SwitchbotDeviceWoHand } from 'node-switchbot';
 import NodeCache from 'node-cache';
-import { DEFAULT_SCAN_RETRY_COOLDOWN, CACHE_TTL, CHECK_CACHE_TTL_PERIOD, DEFAULT_SCAN_RETRIES } from '../settings';
+import {
+	DEFAULT_SCAN_RETRY_COOLDOWN,
+	CACHE_TTL,
+	CHECK_CACHE_TTL_PERIOD,
+	DEFAULT_SCAN_RETRIES,
+} from '../settings';
 
 export class SwitchBotClient {
 	private log: Logger;
 	private readonly client = new SwitchBot();
-	private readonly deviceCache = new NodeCache({ stdTTL: CACHE_TTL, checkperiod: CHECK_CACHE_TTL_PERIOD});
+	private readonly deviceCache = new NodeCache({
+		stdTTL: CACHE_TTL,
+		checkperiod: CHECK_CACHE_TTL_PERIOD,
+		// We want to store reference to the switchbot device
+		// since deep clone kills the connection to it
+		useClones: false,
+		deleteOnExpire: true,
+	});
 
 	constructor(log: Logger) {
 		this.log = log;
@@ -82,7 +94,9 @@ export class SwitchBotClient {
 		return targetDevice;
 	};
 
-	private getDeviceFromCache = (address: string): SwitchbotDeviceWoHand | null=> {
+	private getDeviceFromCache = (
+		address: string,
+	): SwitchbotDeviceWoHand | null => {
 		const device = this.deviceCache.get(address) as SwitchbotDeviceWoHand;
 		if (device) {
 			this.log.info(`Found SwitchBot device (address ${address}) on cache.`);
