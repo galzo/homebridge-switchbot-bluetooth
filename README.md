@@ -101,18 +101,22 @@ under the new platform, add `devices` field
 Upon defining a device in the `devices` list, the following properties are available:
 
 **Mandatory Properties**
-- `name` - Device name
+- `name` - Device name. Must be unique (no duplications).
 - `type` - Type of device. (currently only `bot` is supported).
-- `address` - MAC Address of the SwitchBot device. see details on how to find it.
+- `address` - MAC Address of the SwitchBot device. [Learn how to find MAC Address](#finding-your-switchbot-mac-address).
 
 **Optional Properties**
 - `scanDuration` - Time for scanning bluetooth devices (in miliseconds). 
-<br>a longer time will increase chance of successfuly detecting new devices, but reduce response time.
+<br>A longer time will increase chance of successfuly detecting new devices, but reduce response time.
 <br>Default is `5000` (5000 miliseconds)
 
-- `scanRetries` - Number of times that the plugin should attempt scanning / connecting to SwitchBot device, before failing. 
+- `scanRetries` - The Number of times that the plugin should attempt scanning for SwitchBot device, before failing. 
 <br>Default is `5` (5 attempts)
 
 - `scanRetryCooldown` - Time for waiting between attempts of scanning / connecting to SwitchBot device. 
 <br>Default is `1000` (1000 miliseconds)
+
+## Finding your SwitchBot MAC Address
+Hello world!
+
 
