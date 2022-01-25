@@ -6,26 +6,29 @@
 
 </p>
 
-# Homebridge SwitchBot Bluetooth
+# Homebridge SwitchBot Bluetooth Platform
 
 [![npm version](https://badgen.net/npm/v/homebridge-switchbot-bluetooth-platform)](https://www.npmjs.com/package/homebridge-switchbot-bluetooth-platform)
 [![npm downloads](https://badgen.net/npm/dt/homebridge-switchbot-bluetooth-platform)](https://www.npmjs.com/package/homebridge-switchbot-bluetooth-platform)
 
 <p>
     The Homebridge SwitchBot Bluetooth Platform is a <a href="https://github.com/homebridge/homebridge">Homebridge</a> plugin
-    that allows you to directly control your <a href="https://www.switch-bot.com">SwitchBot</a> bot from HomeKit via BLE (Bluetooth Low)
+    that allows you to directly control your <a href="https://www.switch-bot.com">SwitchBot</a> bot from HomeKit via BLE (Bluetooth Low Energy)
+    This plugin aims to provide the best performance and stability when controlling your SwitchBot bot via BLE. 
 </p>
 
 </span>
 
-<p align="center">
+## Wait, what? why do I need (yet another) SwitchBot plugin?
 
-<img src="https://github.com/homebridge/branding/raw/master/logos/homebridge-wordmark-logo-vertical.png" width="150">
-
+<p>
+    The existing SwitchBot plugins did not provide the level of stability and feature-set that I was looking for.
+    This plugin aims to provide the best performance (around 30% faster calls than other switchbot plugins), 
+    and best stabilty (support for retry mechanism, and error handling), assuring you that the plugin will stay stable upon usage,
+    and the switchbot will respond as fast as possible.  
 </p>
 
-
-## Clone As Template
+## Installatio
 
 Click the link below to create a new GitHub Repository using this template, or click the *Use This Template* button above.
 
