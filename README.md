@@ -107,9 +107,12 @@ Upon defining a device in the `devices` list, the following properties are avail
 
 **Optional Properties**
 - `scanDuration` - Time for scanning bluetooth devices (in miliseconds). a longer time will increase chance of successfuly detecting new devices, but
-reduce response time. <br>Default is `5000` (5000ms / 5s)
+reduce response time.
+<br>Default is `5000` (5000 miliseconds)
+
 - `scanRetries` - Number of times that the plugin should attempt scanning / connecting to SwitchBot device, before failing. 
-Default is `5` (5 attempts)
+<br>Default is `5` (5 attempts)
+
 - `scanRetryCooldown` - Time for waiting between attempts of scanning / connecting to SwitchBot device. 
-Default is `1000` (1000ms / 1s)
+<br>Default is `1000` (1000 miliseconds)
 
