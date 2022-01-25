@@ -17,7 +17,7 @@
     This plugin aims to provide the best performance and stability when controlling your SwitchBot bot via BLE. 
 </p>
 
-# Why do I need (yet another) SwitchBot plugin?
+### Why do I need (yet another) SwitchBot plugin?
 
 <p>
     The existing SwitchBot plugins did not provide the level of stability and feature-set that I was looking for.
@@ -45,14 +45,14 @@ To Be Supported Soon:
 
 ## Installation
 
-### Installing Plugin from the Homebridge Plugins Page
+### Installing from Homebridge Plugins Page
 1. Search for "switchbot bluetooth" 
 2. Find `homebridge-switchbot-bluetooth-platform` 
     - **NOTE:** Check noble [prerequisites](https://github.com/homebridge/noble#prerequisites) for your operating system. this is used for the bluetooth communcation.
 3. Install the plugin
 
-### Installing Plugin Directly:
-1. open Terminal
+### Installing Directly:
+1. Open Terminal
 2. run command `npm install -g homebridge-switchbot-bluetooth-platform`
     - **NOTE:** Check noble [prerequisites](https://github.com/homebridge/noble#prerequisites) for your operating system. this is used for the bluetooth communcation.
 
