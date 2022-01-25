@@ -1,4 +1,4 @@
-import { HAP, Logging } from 'homebridge';
+import { AccessoryPlugin, HAP, Logging } from 'homebridge';
 import {
 	DEFAULT_SCAN_DURATION,
 	DEFAULT_SCAN_RETRIES,
@@ -32,7 +32,7 @@ export class AccessoryFactory {
 		};
 	}
 
-	public buildFromConfig(config: IConfigAccessory) {
+	public buildFromConfig(config: IConfigAccessory): AccessoryPlugin | null {
 		const { name, type } = config;
 		const accessoryParams = this.adaptAccessoryConfig(config);
 
@@ -44,7 +44,8 @@ export class AccessoryFactory {
 			case 'meter':
 			case 'motion':
 			default:
-				throw new Error('accessory is not yet supported');
+				this.log.error(`Accessory type '${type}' is not supported`);
+				return null;
 		}
 	}
 }

@@ -35,10 +35,12 @@ export class SwitchbotPlatform implements StaticPlatformPlugin {
 			return [];
 		}
 
-		return this.config.devices.map((config: IConfigAccessory) => {
-			this.logDevice(config);
-			return this.accessoryFactory.buildFromConfig(config);
-		});
+		return this.config.devices
+			.map((config: IConfigAccessory) => {
+				this.logDevice(config);
+				return this.accessoryFactory.buildFromConfig(config);
+			})
+			.filter((device: AccessoryPlugin) => Boolean(device));
 	};
 
 	/*
