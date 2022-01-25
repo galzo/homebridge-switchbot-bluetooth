@@ -33,32 +33,36 @@
     This plugin also aims to provide several new features, such as support for bot <b>battery status</b>, and <b>password-protected BLE communication</b>.
 </p>
 
-
 </span>
 
 ## Supported Devices
 
 Supported Devices:
+
 - [SwitchBot (Bot)](https://www.switch-bot.com/products/switchbot-bot)
 
 To Be Supported Soon:
+
 - [SwitchBot Curtain (Curtain)](https://www.switch-bot.com/products/switchbot-curtain)
 - [SwitchBot Thermometer & Hygrometer (Meter)](https://www.switch-bot.com/products/switchbot-meter)
 
 ## Installation
 
 ### Installing from Homebridge Plugins Page:
-1. Search for "switchbot bluetooth" 
-2. Find `homebridge-switchbot-bluetooth-platform` 
-    - **NOTE:** Check noble [prerequisites](https://github.com/homebridge/noble#prerequisites) for your operating system. this is used for the bluetooth communcation.
+
+1. Search for "switchbot bluetooth"
+2. Find `homebridge-switchbot-bluetooth-platform`
+   - **NOTE:** Check noble [prerequisites](https://github.com/homebridge/noble#prerequisites) for your operating system. this is used for the bluetooth communcation.
 3. Install the plugin
 
 ### Installing Directly:
+
 1. Open Terminal
 2. run command `npm install -g homebridge-switchbot-bluetooth-platform`
-    - **NOTE:** Check noble [prerequisites](https://github.com/homebridge/noble#prerequisites) for your operating system. this is used for the bluetooth communcation.
+   - **NOTE:** Check noble [prerequisites](https://github.com/homebridge/noble#prerequisites) for your operating system. this is used for the bluetooth communcation.
 
 ## Configuration
+
 Add a new platform to your homebridge `config.json` file
 
 ```json
@@ -101,29 +105,34 @@ under the new platform, add `devices` field
 Upon defining a device in the `devices` list, the following properties are available:
 
 **Mandatory Properties**
+
 - `name` - Device name. Must be unique (no duplications).
 - `type` - Type of device. (currently only `bot` is supported).
 - `address` - MAC Address of the SwitchBot device. [Learn how to find MAC Address](#finding-your-switchbot-mac-address).
 
 **Optional Properties**
-- `scanDuration` - Time for scanning bluetooth devices (in miliseconds). 
-<br>A longer time will increase chance of successfuly detecting new devices, but reduce response time.
-<br>Default is `5000` (5000 miliseconds)
 
-- `scanRetries` - The Number of times that the plugin should attempt scanning for SwitchBot device, before failing. 
-<br>Default is `5` (5 attempts)
+- `scanDuration` - Time for scanning bluetooth devices (in miliseconds).
+  <br>A longer time will increase chance of successfuly detecting new devices, but reduce response time.
+  <br>Default is `5000` (5000 miliseconds)
 
-- `scanRetryCooldown` - Time for waiting between attempts of scanning / connecting to SwitchBot device. 
-<br>Default is `1000` (1000 miliseconds)
+- `scanRetries` - The Number of times that the plugin should attempt scanning for SwitchBot device, before failing.
+  <br>Default is `5` (5 attempts)
+
+- `scanRetryCooldown` - Time for waiting between attempts of scanning / connecting to SwitchBot device.
+  <br>Default is `1000` (1000 miliseconds)
 
 ## Finding your SwitchBot MAC Address
-1. Download SwitchBot App - 
-<a href="https://apps.apple.com/us/app/switchbot/id1087374760"> iOS App Store </a> / 
-<a href="https://play.google.com/store/apps/details?id=com.theswitchbot.switchbot&hl=en&gl=US">Google Play Store</a>
-2. Register / or Login into your SwitchBot account 
+
+1. Download SwitchBot App -
+   <a href="https://apps.apple.com/us/app/switchbot/id1087374760"> iOS App Store </a> /
+   <a href="https://play.google.com/store/apps/details?id=com.theswitchbot.switchbot&hl=en&gl=US">Google Play Store</a>
+2. Register / or Login into your SwitchBot account
 3. Open the device that you want to add to this platform
 4. Click `Device Info`
 5. Copy the `BLE MAC` address
 6. Add the address to the `address` property of the device in the `config.json` file ([Your configuration](#configuration))
 
+## Contact Me
 
+For any question, or complaints, feel free to contact me <a href="https://github.com/galzo">here</a>
