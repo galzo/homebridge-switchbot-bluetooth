@@ -8,8 +8,8 @@
 
 # Homebridge SwitchBot Bluetooth
 
-[![npm version](https://badgen.net/npm/v/@switchbot/homebridge-switchbot)](https://www.npmjs.com/package/homebridge-switchbot-bluetooth-platform)
-[![npm downloads](https://badgen.net/npm/dt/@switchbot/homebridge-switchbot)](https://www.npmjs.com/package/homebridge-switchbot-bluetooth-platform)
+[![npm version](https://badgen.net/npm/v/homebridge-switchbot-bluetooth-platform)](https://www.npmjs.com/package/homebridge-switchbot-bluetooth-platform)
+[![npm downloads](https://badgen.net/npm/dt/homebridge-switchbot-bluetooth-platform)](https://www.npmjs.com/package/homebridge-switchbot-bluetooth-platform)
 
 <p>
     The Homebridge SwitchBot Bluetooth Platform is a <a href="https://github.com/homebridge/homebridge">Homebridge</a> plugin
