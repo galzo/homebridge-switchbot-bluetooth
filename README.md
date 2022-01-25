@@ -23,9 +23,9 @@
     The existing SwitchBot plugins did not provide the level of stability and feature-set that I was looking for.
 </p>
 <p>
-    This plugin aims to provide the <b>best performance</b> (around <b color="green">30% faster</b> BLE calls than other switchbot plugins), 
-    and <b>best stabilty</b> (support for retry mechanism, and error handling), assuring you that the plugin will stay stable upon usage,
-    and the switchbot will respond as fast as possible. 
+    This plugin aims to provide the <b>best performance</b> (around <b>30% faster</b> BLE calls than other switchbot plugins), 
+    and <b>best stabilty</b> (support for retry mechanism, error handling and device details caching), assuring you that the plugin 
+    will stay <b>stable</b> upon usage, and the switchbot will respond <b>as fast as possible.</b> 
 </p>
 <p>
     This plugin also aims to provide several new features, such as support for bot <b>battery status</b>, and <b>password-protected BLE communication</b>.
