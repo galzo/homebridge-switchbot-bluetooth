@@ -117,6 +117,9 @@ Upon defining a device in the `devices` list, the following properties are avail
 <br>Default is `1000` (1000 miliseconds)
 
 ## Finding your SwitchBot MAC Address
-Hello world!
+1. Download SwitchBot App - 
+<a href="https://apps.apple.com/us/app/switchbot/id1087374760"> iOS App Store </a> / 
+<a href="https://play.google.com/store/apps/details?id=com.theswitchbot.switchbot&hl=en&gl=US">Google Play Store</a>
+2. Register / or Login into your SwitchBot account 
 
 
