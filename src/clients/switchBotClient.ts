@@ -1,10 +1,12 @@
 import { Logger } from 'homebridge';
 import SwitchBot, { SwitchbotDeviceWoHand } from 'node-switchbot';
+import NodeCache from 'node-cache';
+import { DEFAULT_SCAN_RETRY_COOLDOWN, CACHE_TTL, CHECK_CACHE_TTL_PERIOD, DEFAULT_SCAN_RETRIES } from '../settings';
 
 export class SwitchBotClient {
 	private log: Logger;
 	private readonly client = new SwitchBot();
-	private readonly deviceCache = new Map<string, SwitchbotDeviceWoHand>();
+	private readonly deviceCache = new NodeCache({ stdTTL: CACHE_TTL, checkperiod: CHECK_CACHE_TTL_PERIOD});
 
 	constructor(log: Logger) {
 		this.log = log;
@@ -13,8 +15,8 @@ export class SwitchBotClient {
 	public getDevice = async (
 		address: string,
 		scanDuration: number,
-		retries = 5,
-		waitBetweenRetries = 500,
+		retries = DEFAULT_SCAN_RETRIES,
+		waitBetweenRetries = DEFAULT_SCAN_RETRY_COOLDOWN,
 	): Promise<SwitchbotDeviceWoHand> => {
 		this.log.info(`Getting SwitchBot device (address ${address})`);
 
@@ -33,8 +35,8 @@ export class SwitchBotClient {
 	public setDeviceState = async (
 		device: SwitchbotDeviceWoHand,
 		targetState: boolean,
-		retries = 5,
-		waitBeteenRetries = 500,
+		retries = DEFAULT_SCAN_RETRIES,
+		waitBeteenRetries = DEFAULT_SCAN_RETRY_COOLDOWN,
 	) => {
 		const setState = async () => {
 			this.log.info(
@@ -80,8 +82,8 @@ export class SwitchBotClient {
 		return targetDevice;
 	};
 
-	private getDeviceFromCache = (address: string) => {
-		const device = this.deviceCache.get(address);
+	private getDeviceFromCache = (address: string): SwitchbotDeviceWoHand | null=> {
+		const device = this.deviceCache.get(address) as SwitchbotDeviceWoHand;
 		if (device) {
 			this.log.info(`Found SwitchBot device (address ${address}) on cache.`);
 			return device;

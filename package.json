@@ -26,10 +26,12 @@
     "homebridge-plugin"
   ],
   "dependencies": {
+    "node-cache": "^5.1.2",
     "node-switchbot": "^1.1.2"
   },
   "devDependencies": {
     "@types/node": "^16.10.9",
+    "@types/node-cache": "^4.2.5",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "@typescript-eslint/parser": "^5.0.0",
     "eslint": "^8.0.1",
