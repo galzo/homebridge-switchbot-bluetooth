@@ -124,6 +124,6 @@ Upon defining a device in the `devices` list, the following properties are avail
 3. Open the device that you want to add to this platform
 4. Click `Device Info`
 5. Copy the `BLE MAC` address
-6. add this address to the `address` property of the device in the `config.json` file
+6. Add the address to the `address` property of the device in the `config.json` file ([Your configuration](#configuration))
 
 
