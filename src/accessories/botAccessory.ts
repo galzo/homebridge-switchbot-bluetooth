@@ -81,12 +81,31 @@ export class BotAccessory implements AccessoryPlugin {
 		callback(HAPStatus.SUCCESS, this.isSwitchOn);
 	};
 
+	private SetPowerStateAfterDelay = (
+		targetPowerState: boolean,
+		delay: number,
+	) => {
+		setTimeout(() => {
+			this.isSwitchOn = targetPowerState;
+			this.switchService
+				?.getCharacteristic(this.hap.Characteristic.On)
+				.updateValue(targetPowerState);
+		}, delay);
+	};
+
+	private setPowerState = (targetPowerState: boolean) => {
+		this.isSwitchOn = targetPowerState;
+		this.switchService
+			?.getCharacteristic(this.hap.Characteristic.On)
+			.updateValue(this.isSwitchOn);
+	};
+
 	private handleSetSwitchValue = async (
 		value: CharacteristicValue,
 		callback: CharacteristicSetCallback,
 	) => {
 		try {
-			const targetPowerMode = Boolean(value);
+			const targetPowerState = Boolean(value);
 
 			const { address, scanDuration, scanRetryCooldown, scanRetries } =
 				this.accessoryParams;
@@ -98,18 +117,27 @@ export class BotAccessory implements AccessoryPlugin {
 				scanRetryCooldown,
 			);
 
+			const operationMode = this.metadataClient.getDeviceOperationMode(
+				address,
+				scanDuration,
+			);
+
 			await this.switchBotClient.setDeviceState(
 				device,
-				targetPowerMode,
+				targetPowerState,
 				scanRetries,
 				scanRetryCooldown,
 			);
 
-			this.isSwitchOn = targetPowerMode;
+			this.setPowerState(targetPowerState);
 
-			this.switchService
-				?.getCharacteristic(this.hap.Characteristic.On)
-				.updateValue(this.isSwitchOn);
+			// In case the switchbot is configured to be in 'press' mode, then
+			// it always turns itself on and then imeddiately off.
+			// this logic mimics the bot's behavior, so that the switch on
+			// homebridge will behave the same.
+			if (operationMode === 'press') {
+				this.SetPowerStateAfterDelay(false, 1000);
+			}
 
 			callback(HAPStatus.SUCCESS);
 		} catch (e) {

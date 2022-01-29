@@ -53,6 +53,13 @@ declare module 'node-switchbot' {
 		model: ModelType;
 		modelName: ModelName;
 		battery: number;
+		/**
+		 * This indicates the mode setting.
+		 * When the mode is "Switch mode",
+		 * this value is true.
+		 * When the mode is "Press mode", this value is false.
+		 */
+		mode: boolean;
 	}
 
 	export default class SwitchBot {
