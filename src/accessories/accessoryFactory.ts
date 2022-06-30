@@ -1,5 +1,6 @@
 import { AccessoryPlugin, HAP, Logging } from 'homebridge';
 import {
+	DEFAULT_AUTO_OFF_IN_PRESS_MODE,
 	DEFAULT_SCAN_DURATION,
 	DEFAULT_SCAN_RETRIES,
 	DEFAULT_SCAN_RETRY_COOLDOWN,
@@ -21,6 +22,7 @@ export class AccessoryFactory {
 			scanDuration = DEFAULT_SCAN_DURATION,
 			scanRetries = DEFAULT_SCAN_RETRIES,
 			scanRetryCooldown = DEFAULT_SCAN_RETRY_COOLDOWN,
+			autoTurnOffInPressMode = DEFAULT_AUTO_OFF_IN_PRESS_MODE,
 		} = config;
 
 		return {
@@ -29,6 +31,7 @@ export class AccessoryFactory {
 			scanDuration,
 			scanRetries,
 			scanRetryCooldown,
+			autoTurnOffInPressMode,
 		};
 	}
 

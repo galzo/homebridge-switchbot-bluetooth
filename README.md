@@ -122,10 +122,8 @@ Upon defining a device in the `devices` list, the following properties are avail
 - `scanRetryCooldown` - Time for waiting between attempts of scanning / connecting to SwitchBot device.
   <br>Default is `1000` (1000 miliseconds)
 
-- `pressModeAutoOffDelay` - Delay (in miliseconds) before the switchbot is shown as OFF in homebridge.
-  <br>Use a negative value to disable auto-off entirely.
-  <br>_NOTE:_ This setting is only relevant for bots that are in 'Press' mode
-  <br>Default is `0` (no delay)
+- `autoTurnOffInPressMode` - Automatically Sets button back to OFF state when bot is configured to be in 'Press' mode (Enabled by default for bots that are set to 'Press' mode)
+  <br>Default is `true` (enabled)
 
 ## Finding your SwitchBot MAC Address
 

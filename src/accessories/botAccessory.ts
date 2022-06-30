@@ -107,8 +107,13 @@ export class BotAccessory implements AccessoryPlugin {
 		try {
 			const targetPowerState = Boolean(value);
 
-			const { address, scanDuration, scanRetryCooldown, scanRetries } =
-				this.accessoryParams;
+			const {
+				address,
+				scanDuration,
+				scanRetryCooldown,
+				scanRetries,
+				autoTurnOffInPressMode,
+			} = this.accessoryParams;
 
 			const device = await this.switchBotClient.getDevice(
 				address,
@@ -131,11 +136,11 @@ export class BotAccessory implements AccessoryPlugin {
 
 			this.setPowerState(targetPowerState);
 
-			// In case the switchbot is configured to be in 'press' mode, then
-			// it always turns itself on and then imeddiately off.
-			// this logic mimics the bot's behavior, so that the switch on
-			// homebridge will behave the same.
-			if (operationMode === 'press') {
+			// In case the switchbot is configured to be in 'press' mode, and autoOff setting is enabled
+			// then it the bot button should be automatically set back to 'off' mode after triggering.
+			const shouldTriggerAutoOff =
+				autoTurnOffInPressMode && operationMode === 'press';
+			if (shouldTriggerAutoOff) {
 				this.SetPowerStateAfterDelay(false, 1000);
 			}
 
