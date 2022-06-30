@@ -64,11 +64,12 @@
             "minimum": 0,
             "placeholder": 1000
           },
-          "pressModeAutoOffDelay": {
-            "type": "integer",
-            "title": "Press mode auto-off delay",
-            "description": "Delay (in miliseconds) before the switchbot is shown as OFF in homebridge. Use a negative value to disable auto-off entirely. (NOTE: This setting is only relevant for bots that are in 'Press' mode)",
-            "required": false
+          "autoTurnOffInPressMode": {
+            "type": "boolean",
+            "title": "Press mode auto-off enabled",
+            "description": "Automatically Sets button back to OFF state when bot is configured to be in 'Press' mode (Enabled by default for bots that are set to 'Press' mode)",
+            "required": false,
+            "default": true
           }
         }
       }
