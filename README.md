@@ -122,6 +122,9 @@ Upon defining a device in the `devices` list, the following properties are avail
 - `scanRetryCooldown` - Time for waiting between attempts of scanning / connecting to SwitchBot device.
   <br>Default is `1000` (1000 miliseconds)
 
+- `autoTurnOffInPressMode` - Automatically Sets button back to OFF state when bot is configured to be in 'Press' mode (Enabled by default for bots that are set to 'Press' mode)
+  <br>Default is `true` (enabled)
+
 ## Finding your SwitchBot MAC Address
 
 1. Download SwitchBot App -

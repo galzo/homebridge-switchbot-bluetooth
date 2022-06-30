@@ -12,6 +12,7 @@ export const DEFAULT_SCAN_DURATION = 5000;
 export const DEFAULT_SCAN_RETRIES = 5;
 export const DEFAULT_SCAN_RETRY_COOLDOWN = 1000;
 export const DEFAULT_BATTERY_LEVEL = 100;
+export const DEFAULT_AUTO_OFF_IN_PRESS_MODE = true;
 
 /**
  * Cache TTL - the amount of time cached items should live

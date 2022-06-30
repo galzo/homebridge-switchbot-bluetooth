@@ -9,6 +9,7 @@ export interface IConfigAccessory {
 	scanDuration?: number;
 	scanRetries?: number;
 	scanRetryCooldown?: number;
+	autoTurnOffInPressMode?: boolean;
 }
 
 export interface IAccessoryParams {
@@ -16,4 +17,5 @@ export interface IAccessoryParams {
 	scanDuration: number;
 	scanRetryCooldown: number;
 	scanRetries: number;
+	autoTurnOffInPressMode: boolean;
 }

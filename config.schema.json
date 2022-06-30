@@ -1,92 +1,77 @@
 {
   "pluginAlias": "SwitchbotBluetoothPlatform",
   "pluginType": "platform",
-  "singular": true,
-  "customUi": true,
   "schema": {
-    "type": "object",
-    "properties": {
-      "name": {
-        "title": "Name",
-        "type": "string",
-        "required": true,
-        "default": "SwitchbotBluetoothPlatform"
-      },
-      "devices": {
-        "type": "array",
-        "title": "Devices",
-        "required": true,
-        "items": {
-          "type": "object",
-          "properties": {
-            "type": {
-              "type": "string",
-              "title": "Type",
-              "required": true,
-              "default": "form",
-              "oneOf": [
-                {
-                  "title": "Bot",
-                  "enum": [
-                    "bot"
-                  ]
-                },
-                {
-                  "title": "Meter - Not Yet Supported",
-                  "enum": [
-                    "meter"
-                  ]
-                },
-                {
-                  "title": "Curtain - Not Yet Supported",
-                  "enum": [
-                    "curtain"
-                  ]
-                },
-                {
-                  "title": "Contact - Not Yet Supported",
-                  "enum": [
-                    "contact"
-                  ]
-                },
-                {
-                  "title": "Motion - Not Yet Supported",
-                  "enum": [
-                    "motion"
-                  ]
-                }
-              ]
-            },
-            "name": {
-              "type": "string",
-              "required": true,
-              "title": "Name"
-            },
-            "address": {
-              "type": "string",
-              "required": true,
-              "title": "Bluetooth Low Energy (BLE) MAC Address",
-              "placeholder": "D7:1E:5C:74:39:61"
-            },
-            "scanDuration": {
-              "type": "integer",
-              "title": "Device Scan Duration (Default is 5000ms)"
-            },
-            "scanRetries": {
-              "type": "integer",
-              "title": "Device Re-scan attempts in case of failure (Default is 5)"
-            },
-            "scanRetryCooldown": {
-              "type": "integer",
-              "title": "Device Re-scan attempt cooldown (Default is 1000ms)"
-            }
+    "name": {
+      "title": "Name",
+      "type": "string",
+      "required": true,
+      "default": "SwitchbotBluetoothPlatform"
+    },
+    "devices": {
+      "type": "array",
+      "title": "Devices",
+      "required": true,
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "title": "Type",
+            "required": true,
+            "default": "form",
+            "oneOf": [
+              {
+                "title": "Bot",
+                "enum": [
+                  "bot"
+                ]
+              }
+            ]
+          },
+          "name": {
+            "type": "string",
+            "required": true,
+            "title": "Name",
+            "placeholder": "Switchbot Name"
+          },
+          "address": {
+            "type": "string",
+            "required": true,
+            "title": "MAC Address",
+            "description": "Bluetooth Low Energy (BLE) MAC Address",
+            "pattern": "^([A-Fa-f0-9]{2}:){5}[A-Fa-f0-9]{2}$",
+            "placeholder": "D7:1E:5C:74:39:61"
+          },
+          "scanDuration": {
+            "type": "integer",
+            "title": "Device Scan Duration",
+            "description": "Time for scanning bluetooth devices in miliseconds. (Default is 5000ms)",
+            "placeholder": "5000",
+            "minimum": 0
+          },
+          "scanRetries": {
+            "type": "integer",
+            "title": "Device Re-scan attempts in case of failure",
+            "description": "The Number of times that the plugin should attempt connecting to SwitchBot device before failing. (Default is 5)",
+            "minimum": 0,
+            "placeholder": 5
+          },
+          "scanRetryCooldown": {
+            "type": "integer",
+            "title": "Device Re-scan attempt cooldown",
+            "description": "Time for waiting between connections attempts to SwitchBot device in miliseconds. (Default is 1000ms)",
+            "minimum": 0,
+            "placeholder": 1000
+          },
+          "autoTurnOffInPressMode": {
+            "type": "boolean",
+            "title": "Press mode auto-off enabled",
+            "description": "Automatically Sets button back to OFF state when bot is configured to be in 'Press' mode (Enabled by default for bots that are set to 'Press' mode)",
+            "required": false,
+            "default": true
           }
         }
-      },
-      "debug": {
-        "title": "Debug",
-        "type": "boolean",
-        "required": false
       }
     }
   }
