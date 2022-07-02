@@ -139,3 +139,7 @@ Upon defining a device in the `devices` list, the following properties are avail
 ## Contact Me
 
 For any questions, assistance or feedback feel free to contact me <a href="https://github.com/galzo">here</a>
+
+## Buy Me a Coffee
+
+If you want to buy me a coffee, you can do so here: https://paypal.me/galzo1 ♥️
