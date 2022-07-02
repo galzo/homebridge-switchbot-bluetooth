@@ -6,6 +6,7 @@ import {
 	DEFAULT_SCAN_RETRY_COOLDOWN,
 } from '../settings';
 import { IConfigAccessory } from '../types/accessoryTypes';
+import { Optional } from '../types/generalTypes';
 import { BotAccessory } from './botAccessory';
 
 export class AccessoryFactory {
@@ -35,20 +36,27 @@ export class AccessoryFactory {
 		};
 	}
 
-	public buildFromConfig(config: IConfigAccessory): AccessoryPlugin | null {
-		const { name, type } = config;
-		const accessoryParams = this.adaptAccessoryConfig(config);
+	public buildFromConfig(config: IConfigAccessory): Optional<AccessoryPlugin> {
+		try {
+			const { name, type } = config;
+			const accessoryParams = this.adaptAccessoryConfig(config);
 
-		switch (type) {
-			case 'bot':
-				return new BotAccessory(name, this.hap, this.log, accessoryParams);
-			case 'contact':
-			case 'curtain':
-			case 'meter':
-			case 'motion':
-			default:
-				this.log.error(`Accessory type '${type}' is not supported`);
-				return null;
+			switch (type) {
+				case 'bot':
+					return new BotAccessory(name, this.hap, this.log, accessoryParams);
+				case 'contact':
+				case 'curtain':
+				case 'meter':
+				case 'motion':
+				default:
+					this.log.error(`Accessory type '${type}' is not supported`);
+					return null;
+			}
+		} catch (e) {
+			this.log.error(
+				`An error has occoured while building acessory from config. ${e}`,
+			);
+			return null;
 		}
 	}
 }

@@ -7,6 +7,8 @@ import {
 	DEFAULT_BATTERY_LEVEL,
 } from '../settings';
 import { SwitchbotOperationMode } from '../types/accessoryTypes';
+import { Optional } from '../types/generalTypes';
+import { logSwitchbotClientError } from '../utils/errorLogger';
 
 export class MetadataClient {
 	private log: Logger;
@@ -52,7 +54,10 @@ export class MetadataClient {
 		return metaData?.serviceData?.battery ?? DEFAULT_BATTERY_LEVEL;
 	};
 
-	private getDeviceMetaData = (address: string, scanDuration: number) => {
+	private getDeviceMetaData = (
+		address: string,
+		scanDuration: number,
+	): Optional<AdvertisementData> => {
 		const metaData = this.getMetadataFromCache(address);
 
 		if (!metaData && !this.isScanningForMetadata) {
@@ -69,15 +74,21 @@ export class MetadataClient {
 		address: string,
 		scanDuration: number,
 	) => {
-		this.log.info('Scanning for device metadata');
-		this.isScanningForMetadata = true;
+		try {
+			this.log.info('Scanning for device metadata');
+			this.isScanningForMetadata = true;
 
-		await this.client.startScan({ model: 'H' });
-		await this.client.wait(scanDuration);
-		this.client.stopScan();
+			await this.client.startScan({ model: 'H' });
+			await this.client.wait(scanDuration);
+			this.client.stopScan();
 
-		this.isScanningForMetadata = false;
-		this.log.info(`Finished scanning for device metadata (address ${address})`);
+			this.isScanningForMetadata = false;
+			this.log.info(
+				`Finished scanning for device metadata (address ${address})`,
+			);
+		} catch (e) {
+			logSwitchbotClientError(this.log, e);
+		}
 	};
 
 	private handleScannedMetadata = (data: AdvertisementData) => {

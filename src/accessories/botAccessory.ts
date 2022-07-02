@@ -122,6 +122,10 @@ export class BotAccessory implements AccessoryPlugin {
 				scanRetryCooldown,
 			);
 
+			if (!device) {
+				throw Error('Failed fetching switchbot device');
+			}
+
 			const operationMode = this.metadataClient.getDeviceOperationMode(
 				address,
 				scanDuration,

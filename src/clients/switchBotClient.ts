@@ -7,6 +7,8 @@ import {
 	CHECK_CACHE_TTL_PERIOD,
 	DEFAULT_SCAN_RETRIES,
 } from '../settings';
+import { Optional } from '../types/generalTypes';
+import { logSwitchbotClientError } from '../utils/errorLogger';
 
 export class SwitchBotClient {
 	private log: Logger;
@@ -29,7 +31,7 @@ export class SwitchBotClient {
 		scanDuration: number,
 		retries = DEFAULT_SCAN_RETRIES,
 		waitBetweenRetries = DEFAULT_SCAN_RETRY_COOLDOWN,
-	): Promise<SwitchbotDeviceWoHand> => {
+	): Promise<Optional<SwitchbotDeviceWoHand>> => {
 		this.log.info(`Getting SwitchBot device (address ${address})`);
 
 		const deviceFromCache = this.getDeviceFromCache(address);
@@ -37,11 +39,17 @@ export class SwitchBotClient {
 			return deviceFromCache;
 		}
 
-		return this.attemptRun(
-			async () => this.getDeviceFromScan(address, scanDuration),
-			retries,
-			waitBetweenRetries,
-		);
+		try {
+			const deviceFromScan = await this.attemptRun(
+				async () => this.getDeviceFromScan(address, scanDuration),
+				retries,
+				waitBetweenRetries,
+			);
+			return deviceFromScan;
+		} catch (e) {
+			logSwitchbotClientError(this.log, e);
+			return null;
+		}
 	};
 
 	public setDeviceState = async (
@@ -96,7 +104,7 @@ export class SwitchBotClient {
 
 	private getDeviceFromCache = (
 		address: string,
-	): SwitchbotDeviceWoHand | null => {
+	): Optional<SwitchbotDeviceWoHand> => {
 		const device = this.deviceCache.get(address) as SwitchbotDeviceWoHand;
 		if (device) {
 			this.log.info(`Found SwitchBot device (address ${address}) on cache.`);
