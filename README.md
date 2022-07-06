@@ -18,8 +18,8 @@
 [![npm version](https://badgen.net/npm/v/homebridge-switchbot-bluetooth-platform)](https://www.npmjs.com/package/homebridge-switchbot-bluetooth-platform)
 [![npm downloads](https://badgen.net/npm/dt/homebridge-switchbot-bluetooth-platform)](https://www.npmjs.com/package/homebridge-switchbot-bluetooth-platform)
 [![latest commit](https://badgen.net/github/last-commit/galzo/homebridge-switchbot-bluetooth)](https://github.com/galzo/homebridge-switchbot-bluetooth)<br>
-[![paypal](https://img.shields.io/badge/Donate-PayPal-orange?logo=paypal&style=flat-square)](https://paypal.me/galzo1)
 [![verified-by-homebridge](https://badgen.net/badge/homebridge/verified/purple)](https://github.com/homebridge/homebridge/wiki/Verified-Plugins)
+[![paypal](https://img.shields.io/badge/Donate-PayPal-orange?logo=paypal&style=flat-square)](https://paypal.me/galzo1)
 
 ### Why do I need (yet another) SwitchBot plugin?
 
