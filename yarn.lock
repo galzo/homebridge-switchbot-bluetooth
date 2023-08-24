@@ -2,7 +2,7 @@
 # yarn lockfile v1
 
 
-"@abandonware/noble@1.9.2-20":
+"@abandonware/noble@^1.9.2-15":
   version "1.9.2-20"
   resolved "https://registry.npmjs.org/@abandonware/noble/-/noble-1.9.2-20.tgz"
   integrity sha512-VQ7ykO46JGJJp/VzblD9hGzuRrC3XaDDgaz5JO+O0R4PP1jXgiuGG2ruZxg80E+oUy6mtUS4YAhrZifqITPaHQ==
@@ -1582,12 +1582,12 @@ node-gyp-build@^4.3.0, node-gyp-build@^4.5.0:
   resolved "https://registry.npmjs.org/node-gyp-build/-/node-gyp-build-4.6.0.tgz"
   integrity sha512-NTZVKn9IylLwUzaKjkas1e4u2DLNcV4rdYagA4PWdPwW87Bi7z+BznyKSRwS/761tV/lzCGXplWsiaMjLqP2zQ==
 
-node-switchbot@1.8.1:
-  version "1.8.1"
-  resolved "https://registry.npmjs.org/node-switchbot/-/node-switchbot-1.8.1.tgz"
-  integrity sha512-xhYznrW0hvvKKlBUSV9hoOvRNIWo3VjeHXR0jGgCUwxIrv0G48QAZJS+Pug/2WK+q0jSm+b5em2FlSTaRqVHCg==
+node-switchbot@1.3.0:
+  version "1.3.0"
+  resolved "https://registry.npmjs.org/node-switchbot/-/node-switchbot-1.3.0.tgz"
+  integrity sha512-EQ1Hst4wFtNP6q7dg2HDhGQbK+QDefSUihY80Tl82a9VIhv8H/ietHx2f/L7ozCs6V6LZIqDjQfltOS9tRG+Fw==
   dependencies:
-    "@abandonware/noble" "1.9.2-20"
+    "@abandonware/noble" "^1.9.2-15"
 
 nodemon@^2.0.18:
   version "2.0.18"
