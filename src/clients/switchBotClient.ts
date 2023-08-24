@@ -34,10 +34,10 @@ export class SwitchBotClient {
 	): Promise<Optional<SwitchbotDeviceWoHand>> => {
 		this.log.info(`Getting SwitchBot device (address ${address})`);
 
-		const deviceFromCache = this.getDeviceFromCache(address);
-		if (deviceFromCache) {
-			return deviceFromCache;
-		}
+		// const deviceFromCache = this.getDeviceFromCache(address);
+		// if (deviceFromCache) {
+		// 	return deviceFromCache;
+		// }
 
 		try {
 			const deviceFromScan = await this.attemptRun(
